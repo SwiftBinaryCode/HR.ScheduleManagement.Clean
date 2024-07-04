@@ -1,0 +1,25 @@
+﻿
+
+<EditForm Model="@TaskType" OnValidSubmit="@OnValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <fieldset disabled="@Disabled">
+        <div class="form-group">
+            <label>Title:</label>
+            <div>
+                <InputText @bind-Value="@TaskType.Title" class="form-control" />
+                <ValidationMessage For="@(() => TaskType.Title)" />
+            </div>
+        </div>
+    </fieldset>
+
+    @if(!Disabled)
+        {
+            <button type="submit" class="btn btn-success btn-block">
+                    @ButtonText
+            </button>
+        }
+        <BackToList Target="tasktypes" />
+
+</EditForm>

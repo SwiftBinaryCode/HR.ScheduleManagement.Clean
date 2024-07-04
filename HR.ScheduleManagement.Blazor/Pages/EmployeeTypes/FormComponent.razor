@@ -1,0 +1,32 @@
+﻿
+
+<EditForm Model="@EmployeeType" OnValidSubmit="@OnValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <fieldset disabled="@Disabled">
+        <div class="form-group">
+            <label>Name:</label>
+            <div>
+                <InputText @bind-Value="@EmployeeType.Name" class="form-control" />
+                <ValidationMessage For="@(() => EmployeeType.Name)" />
+            </div>
+        </div>
+        <div class="form-group">
+             <label>Position</label>
+             <div>
+                 <InputText @bind-Value="@EmployeeType.Position" class="form-control" />
+                 <ValidationMessage For="@(() => EmployeeType.Position)" />
+             </div>
+        </div>
+    </fieldset>
+
+    @if(!Disabled)
+        {
+            <button type="submit" class="btn btn-success btn-block">
+                    @ButtonText
+            </button>
+        }
+        <BackToList Target="employeetypes" />
+
+</EditForm>

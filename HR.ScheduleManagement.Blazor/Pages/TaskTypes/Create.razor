@@ -1,0 +1,32 @@
+﻿@page "/tasktypes/create/"
+
+<h3>Create Task</h3>
+
+@if (string.IsNullOrEmpty(Message) == false)
+{
+    <div class="alert alert-danger">
+        @Message
+    </div>
+}
+
+<FormComponent ButtonText="Create" TaskType="taskType" OnValidSubmit="@CreateTaskType" />
+
+@code {
+    [Inject]
+    NavigationManager _navManager { get; set; }
+
+    [Inject]
+    ITaskTypeService _client { get; set; }
+    public string Message { get; private set; }
+
+    TaskTypeVM taskType = new TaskTypeVM();
+    async Task CreateTaskType()
+    {
+        var response = await _client.CreateTaskType(taskType);
+        if (response.Success)
+        {
+            _navManager.NavigateTo("/tasktypes/");
+        }
+        Message = response.Message;
+    }
+}

@@ -1,0 +1,34 @@
+﻿@page "/employeetypes/create/"
+@using HR.ScheduleManagement.Blazor.Contracts
+@using HR.ScheduleManagement.Blazor.Models.EmployeeTypes
+
+
+<h3>Create Employee </h3>
+
+@if (string.IsNullOrEmpty(Message) == false)
+{
+    <div class="alert alert-danger">
+        @Message
+    </div>
+}
+
+<FormComponent ButtonText="Create" EmployeeType="employeeType" OnValidSubmit="@CreateEmployeeType" />
+
+@code {
+    [Inject]
+    NavigationManager _navManager { get; set; }
+    [Inject]
+    IEmployeeTypeService _client { get; set; }
+    public string Message { get; private set; }
+
+    EmployeeTypeVM employeeType = new EmployeeTypeVM();
+    async Task CreateEmployeeType()
+    {
+        var response = await _client.CreateEmployeeType(employeeType);
+        if (response.Success)
+        {
+            _navManager.NavigateTo("/employeetypes/");
+        }
+        Message = response.Message;
+    }
+}

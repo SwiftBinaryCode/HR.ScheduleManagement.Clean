@@ -5,7 +5,7 @@ using MediatR;
 
 namespace HR.ScheduleManagement.Application.Features.EmployeeType.Commands.CreateEmployeeType
 {
-    internal class CreateEmployeeTypeCommandHandler : IRequestHandler<CreateEmployeeTypeCommand, int>
+    public class CreateEmployeeTypeCommandHandler : IRequestHandler<CreateEmployeeTypeCommand, int>
     {
         private readonly IMapper _mapper;
         private readonly IEmployeeTypeRepository _employeeTypeRepository;

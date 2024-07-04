@@ -1,0 +1,102 @@
+﻿@page "/tasktypes/"
+
+
+<h3>Tasks</h3>
+
+<div class="m-2 d-flex justify-content-end">
+    <button @onclick="CreateTaskType" class="btn btn-success">Add Task</button>
+</div>
+
+@if (string.IsNullOrEmpty(Message) == false)
+{
+    <div class="alert alert-danger">
+        @Message
+    </div>
+}
+
+<div clas></div>
+@if (TaskTypes == null)
+{
+    <p>Loading Data...</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Id
+                </th>
+                <th>
+                    Title
+                </th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var taskType in TaskTypes)
+            {
+                <tr>
+                    <td>@taskType.Id </td>
+                    <td>@taskType.Title </td>
+                   
+                    <td>
+
+                        <button @onclick="@(() => EditTaskType(taskType.Id))" class="btn btn-warning">Edit</button>
+                        <button @onclick="@(() => DeleteTaskType(taskType.Id))" class="btn btn-danger">Delete</button>
+                        <button @onclick="@(() => DetailsTaskType(taskType.Id))" class="btn btn-info">Details</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+}
+
+
+
+@code {
+    [Inject]
+    public NavigationManager NavigationManager { get; set; }
+
+    [Inject]
+    public ITaskTypeService TaskTypeService { get; set; }
+
+
+    public List<TaskTypeVM> TaskTypes { get; private set; }
+
+    public string Message { get; set; } = string.Empty;
+
+    protected void CreateTaskType()
+    {
+        NavigationManager.NavigateTo("/tasktypes/create/");
+    }
+
+    protected void EditTaskType(int id)
+    {
+        NavigationManager.NavigateTo($"/tasktypes/edit/{id}");
+    }
+
+    protected void DetailsTaskType(int id)
+    {
+        NavigationManager.NavigateTo($"/tasktypes/details/{id}");
+    }
+
+    protected async Task DeleteTaskType(int id)
+    {
+        var response = await TaskTypeService.DeleteTaskType(id);
+        if (response.Success)
+        {
+
+            await OnInitializedAsync();
+        }
+        else
+        {
+            Message = response.Message;
+        }
+    }
+
+    protected override async Task OnInitializedAsync() => TaskTypes = await TaskTypeService.GetTaskTypes();
+
+}

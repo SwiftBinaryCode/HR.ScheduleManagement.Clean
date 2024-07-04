@@ -1,0 +1,13 @@
+﻿@page "/tasktypes/edit/{id:int}"
+
+<h3>Edit</h3>
+
+
+@if (string.IsNullOrEmpty(Message) == false)
+{
+    <div class="alert alert-danger">
+        @Message
+    </div>
+}
+
+<FormComponent ButtonText="Update" TaskType="taskType" OnValidSubmit="@EditTaskType" />

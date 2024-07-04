@@ -1,0 +1,115 @@
+﻿@page "/employeetypes/"
+@using HR.ScheduleManagement.Blazor.Contracts
+@using HR.ScheduleManagement.Blazor.Models.EmployeeTypes
+
+
+
+
+<h3>Employees</h3>
+
+<div class="m-2 d-flex justify-content-end">
+    <button @onclick="CreateEmployeeType" class="btn btn-success">Add Employee</button>
+</div>
+
+
+@if (string.IsNullOrEmpty(Message) == false)
+{
+    <div class="alert alert-danger">
+        @Message
+    </div>
+}
+
+<div clas></div>
+@if (EmployeeTypes == null)
+{
+    <p>Loading Data...</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Id
+                </th>
+                <th>
+                    Name
+                </th>
+                <th>
+                   Position
+                </th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+           @foreach (var employeeType in EmployeeTypes)
+            {
+                <tr>
+                    <td>@employeeType.Id </td>
+                    <td>@employeeType.Name </td>
+                    <td>@employeeType.Position </td>
+                 
+
+                    
+                    <td>
+                        
+                            <button @onclick="@(() => EditEmployeeType(employeeType.Id))" class="btn btn-warning">Edit</button>
+                            <button @onclick="@(() => DeleteEmployeeType(employeeType.Id))" class="btn btn-danger">Delete</button>
+                       
+                          
+                        
+                        <button @onclick="@(() => DetailsEmployeeType(employeeType.Id))" class="btn btn-info">Details</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+}
+@code{
+
+    [Inject]
+    public NavigationManager NavigationManager { get; set; }
+
+    [Inject]
+    public IEmployeeTypeService EmployeeTypeService { get; set; }
+
+
+    public List<EmployeeTypeVM> EmployeeTypes { get; private set; }
+
+    public string Message { get; set; } = string.Empty;
+
+    protected void CreateEmployeeType()
+    {
+        NavigationManager.NavigateTo("/employeetypes/create/");
+    }
+
+    protected void EditEmployeeType(int id)
+    {
+        NavigationManager.NavigateTo($"/employeetypes/edit/{id}");
+    }
+
+    protected void DetailsEmployeeType(int id)
+    {
+        NavigationManager.NavigateTo($"/employeetypes/details/{id}");
+    }
+
+    protected async Task DeleteEmployeeType(int id)
+    {
+        var response = await EmployeeTypeService.DeleteEmployeeType(id);
+        if (response.Success)
+        {
+
+            await OnInitializedAsync();
+        }
+        else
+        {
+            Message = response.Message;
+        }
+    }
+
+    protected override async Task OnInitializedAsync() => EmployeeTypes = await EmployeeTypeService.GetEmployeeTypes();
+
+}
+                          

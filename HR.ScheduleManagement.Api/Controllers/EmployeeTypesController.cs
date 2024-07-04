@@ -34,10 +34,10 @@ namespace HR.ScheduleManagement.Api.Controllers
         // GET api/<EmployeeTypesController>/5
      
         [HttpGet("{id}")]
-        public async Task<ActionResult<EmployeeTypeDto>> Get(int id)
+        public async Task<ActionResult<EmployeeTypeDetailsDto>> Get(int id)
         {
-            var domainType = await _mediator.Send(new GetEmployeeTypeDetailsQuery(id));
-            return Ok(domainType);
+            var employeeType = await _mediator.Send(new GetEmployeeTypeDetailsQuery(id));
+            return Ok(employeeType);
         }
 
         // POST api/<EmployeeTypesController>

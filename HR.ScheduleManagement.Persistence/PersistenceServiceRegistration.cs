@@ -17,6 +17,7 @@ namespace HR.ScheduleManagement.Persistence
 
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             services.AddScoped<IEmployeeTypeRepository, EmployeeTypeRepository>();
+            services.AddScoped<ITaskTypeRepository, TaskTypeRepository>();
 
             return services;
         }
