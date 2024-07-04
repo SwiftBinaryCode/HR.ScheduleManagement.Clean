@@ -26,44 +26,23 @@
 }
 else
 {
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    Id
-                </th>
-                <th>
-                    Name
-                </th>
-                <th>
-                   Position
-                </th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-           @foreach (var employeeType in EmployeeTypes)
-            {
-                <tr>
-                    <td>@employeeType.Id </td>
-                    <td>@employeeType.Name </td>
-                    <td>@employeeType.Position </td>
-                 
-
-                    
-                    <td>
-                        
-                            <button @onclick="@(() => EditEmployeeType(employeeType.Id))" class="btn btn-warning">Edit</button>
-                            <button @onclick="@(() => DeleteEmployeeType(employeeType.Id))" class="btn btn-danger">Delete</button>
-                       
-                          
-                        
+    <div class="row">
+        @foreach (var employeeType in EmployeeTypes)
+        {
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">@employeeType.Name</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">@employeeType.Position</h6>
+                        <p class="card-text">ID: @employeeType.Id</p>
+                        <button @onclick="@(() => EditEmployeeType(employeeType.Id))" class="btn btn-warning">Edit</button>
+                        <button @onclick="@(() => DeleteEmployeeType(employeeType.Id))" class="btn btn-danger">Delete</button>
                         <button @onclick="@(() => DetailsEmployeeType(employeeType.Id))" class="btn btn-info">Details</button>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
 
 
 }

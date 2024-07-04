@@ -21,35 +21,22 @@
 }
 else
 {
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    Id
-                </th>
-                <th>
-                    Title
-                </th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var taskType in TaskTypes)
-            {
-                <tr>
-                    <td>@taskType.Id </td>
-                    <td>@taskType.Title </td>
-                   
-                    <td>
-
+    <div class="row">
+        @foreach (var taskType in TaskTypes)
+        {
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">ID: @taskType.Id</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">@taskType.Title</h6>
                         <button @onclick="@(() => EditTaskType(taskType.Id))" class="btn btn-warning">Edit</button>
                         <button @onclick="@(() => DeleteTaskType(taskType.Id))" class="btn btn-danger">Delete</button>
                         <button @onclick="@(() => DetailsTaskType(taskType.Id))" class="btn btn-info">Details</button>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
 
 
 }
