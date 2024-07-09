@@ -26,24 +26,22 @@
 }
 else
 {
-    <div class="row">
-        @foreach (var employeeType in EmployeeTypes)
-        {
-            <div class="col-md-4 mb-3">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">@employeeType.Name</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">@employeeType.Position</h6>
-                        <h6 class="card-subtitle mb-2 text-muted">@employeeType.Task</h6>
-
-                        <p class="card-text">ID: @employeeType.Id</p>
-                        <button @onclick="@(() => EditEmployeeType(employeeType.Id))" class="btn btn-warning">Edit</button>
-                        <button @onclick="@(() => DeleteEmployeeType(employeeType.Id))" class="btn btn-danger">Delete</button>
-                        <button @onclick="@(() => DetailsEmployeeType(employeeType.Id))" class="btn btn-info">Details</button>
+    <div class="container">
+        <div class="row">
+            @foreach (var employeeType in EmployeeTypes)
+            {
+                <div class="col-md-4 mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class="card-title"><strong>Name:</strong> @employeeType.Name</h3>
+                            <h5 class="card-title"> <strong>Task:</strong> @employeeType.Task</h5>
+                            <button @onclick="@(() => EditEmployeeType(employeeType.Id))" class="btn btn-warning">Edit</button>
+                            <button @onclick="@(() => DeleteEmployeeType(employeeType.Id))" class="btn btn-danger">Delete</button>
+                        </div>
                     </div>
                 </div>
-            </div>
-        }
+            }
+        </div>
     </div>
 
 
