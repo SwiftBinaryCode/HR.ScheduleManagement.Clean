@@ -7,5 +7,8 @@ namespace HR.ScheduleManagement.Application.Features.EmployeeType.Commands.Creat
         public string Name { get; set; } = string.Empty;
 
         public string Position { get; set; } = string.Empty;
+
+        public string Task { get; set; } = string.Empty;
+
     }
 }

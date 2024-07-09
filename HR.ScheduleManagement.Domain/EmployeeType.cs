@@ -8,7 +8,9 @@ namespace HR.ScheduleManagement.Domain
         public string Name { get; set; }
         
         public string Position { get; set; }
-      
+
+        public string Task { get; set; }
+
 
     }
 }

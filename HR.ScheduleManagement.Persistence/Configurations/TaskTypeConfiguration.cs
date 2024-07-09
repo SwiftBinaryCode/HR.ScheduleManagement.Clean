@@ -15,7 +15,14 @@ namespace HR.ScheduleManagement.Persistence.Configurations
                    Title = "Shipping",
                    
 
-               }
+               },
+                 new TaskType
+                 {
+                     Id = 2,
+                     Title = "Scanning",
+
+
+                 }
            );
 
             builder.Property(q => q.Title)

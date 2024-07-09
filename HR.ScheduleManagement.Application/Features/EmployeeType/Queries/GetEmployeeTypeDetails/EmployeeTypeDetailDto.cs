@@ -7,5 +7,8 @@
 
         public string Position { get; set; } = string.Empty;
 
+        public string Task { get; set; } = string.Empty;
+
+
     }
 }

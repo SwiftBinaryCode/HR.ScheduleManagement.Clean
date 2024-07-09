@@ -34,6 +34,8 @@ else
                     <div class="card-body">
                         <h5 class="card-title">@employeeType.Name</h5>
                         <h6 class="card-subtitle mb-2 text-muted">@employeeType.Position</h6>
+                        <h6 class="card-subtitle mb-2 text-muted">@employeeType.Task</h6>
+
                         <p class="card-text">ID: @employeeType.Id</p>
                         <button @onclick="@(() => EditEmployeeType(employeeType.Id))" class="btn btn-warning">Edit</button>
                         <button @onclick="@(() => DeleteEmployeeType(employeeType.Id))" class="btn btn-danger">Delete</button>
@@ -56,6 +58,7 @@ else
 
 
     public List<EmployeeTypeVM> EmployeeTypes { get; private set; }
+
 
     public string Message { get; set; } = string.Empty;
 

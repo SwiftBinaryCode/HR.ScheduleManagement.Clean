@@ -25,7 +25,7 @@ namespace HR.ScheduleManagement.Application.Features.EmployeeType.Commands.Creat
 
             RuleFor(q => q)
            .MustAsync(EmployeeTypeNameUnique)
-           .WithMessage("Leave type already exists");
+           .WithMessage("Employee already exists");
         }
 
         private Task<bool> EmployeeTypeNameUnique(CreateEmployeeTypeCommand command, CancellationToken token)

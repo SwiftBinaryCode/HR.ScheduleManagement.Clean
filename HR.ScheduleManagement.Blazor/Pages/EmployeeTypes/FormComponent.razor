@@ -19,6 +19,13 @@
                  <ValidationMessage For="@(() => EmployeeType.Position)" />
              </div>
         </div>
+        <div class="form-group">
+            <label>Task</label>
+            <div>
+                <InputText @bind-Value="@EmployeeType.Task" class="form-control" />
+                <ValidationMessage For="@(() => EmployeeType.Task)" />
+            </div>
+        </div>
     </fieldset>
 
     @if(!Disabled)

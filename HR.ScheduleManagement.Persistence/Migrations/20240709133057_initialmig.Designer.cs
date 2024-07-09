@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HR.ScheduleManagement.Persistence.Migrations
 {
     [DbContext(typeof(HrDatabaseContext))]
-    [Migration("20240702141131_InitialTaskMig")]
-    partial class InitialTaskMig
+    [Migration("20240709133057_initialmig")]
+    partial class initialmig
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -48,6 +48,10 @@ namespace HR.ScheduleManagement.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Task")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.ToTable("Employees");
@@ -57,7 +61,8 @@ namespace HR.ScheduleManagement.Persistence.Migrations
                         {
                             Id = 1,
                             Name = "Test1",
-                            Position = "O/E"
+                            Position = "O/E",
+                            Task = "Shipping"
                         });
                 });
 
@@ -89,6 +94,11 @@ namespace HR.ScheduleManagement.Persistence.Migrations
                         {
                             Id = 1,
                             Title = "Shipping"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Title = "Scanning"
                         });
                 });
 #pragma warning restore 612, 618

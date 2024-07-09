@@ -13,8 +13,10 @@ namespace HR.ScheduleManagement.Persistence.Configurations
                {
                    Id = 1,
                    Name = "Test1",
-                   Position = "O/E"
-                  
+                   Position = "O/E",
+                   Task = "Shipping"
+                 
+
                }
            );
 
