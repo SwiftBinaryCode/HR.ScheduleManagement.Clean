@@ -10,5 +10,7 @@ namespace HR.ScheduleManagement.Application.Features.EmployeeType.Commands.Updat
         public string Position { get; set; } = string.Empty;
 
         public string Task {  get; set; } = string.Empty;
+
+        public string secondTask { get; set; } = string.Empty;
     }
 }

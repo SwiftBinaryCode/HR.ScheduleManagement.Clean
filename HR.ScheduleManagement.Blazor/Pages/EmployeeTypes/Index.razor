@@ -28,21 +28,33 @@ else
 {
     <div class="container">
         <div class="row">
-            @foreach (var employeeType in EmployeeTypes)
-            {
-                <div class="col-md-4 mb-3">
-                    <div class="card">
-                        <div class="card-body">
-                            <h3 class="card-title"><strong>Name:</strong> @employeeType.Name</h3>
-                            <h5 class="card-title"> <strong>Task:</strong> @employeeType.Task</h5>
-                            <button @onclick="@(() => EditEmployeeType(employeeType.Id))" class="btn btn-warning">Edit</button>
-                            <button @onclick="@(() => DeleteEmployeeType(employeeType.Id))" class="btn btn-danger">Delete</button>
-                        </div>
-                    </div>
-                </div>
-            }
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Before Lunch</th>
+                        <th>After Lunch</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var employeeType in EmployeeTypes)
+                    {
+                        <tr>
+                            <td>@employeeType.Name</td>
+                            <td>@employeeType.Task</td>
+                            <td>@employeeType.secondTask</td>
+                            <td>
+                                <button @onclick="@(() => EditEmployeeType(employeeType.Id))" class="btn btn-warning btn-sm">Edit</button>
+                                <button @onclick="@(() => DeleteEmployeeType(employeeType.Id))" class="btn btn-danger btn-sm">Delete</button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
         </div>
     </div>
+
 
 
 }

@@ -1166,6 +1166,9 @@ namespace HR.ScheduleManagement.Blazor.Services.Base
         [System.Text.Json.Serialization.JsonPropertyName("task")]
         public string Task { get; set; }
 
+        [System.Text.Json.Serialization.JsonPropertyName("secondTask")]
+        public string SecondTask { get; set; }
+
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.0.8.0 (NJsonSchema v11.0.1.0 (Newtonsoft.Json v13.0.0.0))")]
@@ -1193,6 +1196,9 @@ namespace HR.ScheduleManagement.Blazor.Services.Base
         [System.Text.Json.Serialization.JsonPropertyName("task")]
         public string Task { get; set; }
 
+        [System.Text.Json.Serialization.JsonPropertyName("secondTask")]
+        public string SecondTask { get; set; }
+
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.0.8.0 (NJsonSchema v11.0.1.0 (Newtonsoft.Json v13.0.0.0))")]
@@ -1210,6 +1216,9 @@ namespace HR.ScheduleManagement.Blazor.Services.Base
 
         [System.Text.Json.Serialization.JsonPropertyName("task")]
         public string Task { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("secondTask")]
+        public string SecondTask { get; set; }
 
     }
 
@@ -1282,6 +1291,9 @@ namespace HR.ScheduleManagement.Blazor.Services.Base
 
         [System.Text.Json.Serialization.JsonPropertyName("task")]
         public string Task { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("secondTask")]
+        public string SecondTask { get; set; }
 
     }
 
