@@ -18,6 +18,8 @@ namespace HR.ScheduleManagement.Blazor.Models.EmployeeTypes
         [Required]
         public string secondTask { get; set; } = string.Empty;
 
+        public string extraTask { get; set; } = string.Empty;
+
 
     }
 }

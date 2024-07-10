@@ -12,5 +12,8 @@ namespace HR.ScheduleManagement.Application.Features.EmployeeType.Commands.Creat
 
         public string secondTask {  get; set; } = string.Empty;
 
+        public string extraTask { get; set; }
+
+
     }
 }

@@ -89,6 +89,7 @@ else
                         <th>Name</th>
                         <th>Before Lunch</th>
                         <th>After Lunch</th>
+                        <th>Extra Task</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -126,6 +127,7 @@ else
                             <td>@employeeType.Name</td>
                             <td style="@taskStyle">@employeeType.Task</td>
                             <td style="@secondTaskStyle">@employeeType.secondTask</td>
+                            <td>@employeeType.extraTask</td>
                             <td>
                                 <button @onclick="@(() => EditEmployeeType(employeeType.Id))" class="btn btn-warning btn-sm">Edit</button>
                                 <button @onclick="@(() => DeleteEmployeeType(employeeType.Id))" class="btn btn-danger btn-sm">Delete</button>

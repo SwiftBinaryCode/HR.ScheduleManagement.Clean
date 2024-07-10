@@ -13,6 +13,9 @@ namespace HR.ScheduleManagement.Domain
 
         public string secondTask { get; set; }
 
+        public string extraTask { get; set; }
+
+
 
     }
 }

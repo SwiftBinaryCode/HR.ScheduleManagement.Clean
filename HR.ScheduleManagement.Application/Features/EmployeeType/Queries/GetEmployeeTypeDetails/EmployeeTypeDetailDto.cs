@@ -11,6 +11,8 @@
 
         public string secondTask { get; set; } = string.Empty;
 
+        public string extraTask { get; set; }
+
 
     }
 }
