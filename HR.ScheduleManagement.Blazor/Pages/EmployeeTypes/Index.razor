@@ -175,11 +175,9 @@ else
                                 string taskStyle = "";
                                 string secondTaskStyle = "";
 
-                                
                                 string taskLower = employeeType.Task?.ToLower();
                                 string secondTaskLower = employeeType.secondTask?.ToLower();
 
-                               
                                 if (taskLower == "sjuk")
                                 {
                                     taskStyle = "background-color: red; color: white;";
@@ -189,7 +187,6 @@ else
                                     taskStyle = "background-color: green; color: black;";
                                 }
 
-                              
                                 if (secondTaskLower == "sjuk")
                                 {
                                     secondTaskStyle = "background-color: red; color: white;";
@@ -221,8 +218,7 @@ else
 
 
 }
-@code{
-
+@code {
     [Inject]
     public NavigationManager NavigationManager { get; set; }
 
@@ -237,7 +233,6 @@ else
         "O/E",
         "Shipping",
         "Limning",
-        
     };
 
     protected void CreateEmployeeType()
@@ -271,18 +266,24 @@ else
     protected override async Task OnInitializedAsync()
     {
         EmployeeTypes = await EmployeeTypeService.GetEmployeeTypes();
-       
     }
 
-    private void AssignRandomTasks()
+    private async Task AssignRandomTasks()
     {
         var rand = new Random();
         foreach (var employee in EmployeeTypes)
         {
             employee.Task = randomTasks[rand.Next(randomTasks.Count)];
             employee.secondTask = randomTasks[rand.Next(randomTasks.Count)];
-        }
-        StateHasChanged(); 
-    }
 
+            // Save the updated employee task to the database
+            var response = await EmployeeTypeService.UpdateEmployeeType(employee.Id, employee);
+            if (!response.Success)
+            {
+                Message = response.Message;
+                break;
+            }
+        }
+        StateHasChanged();
+    }
 }
