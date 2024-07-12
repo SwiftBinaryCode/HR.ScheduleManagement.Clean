@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HR.ScheduleManagement.Persistence.Migrations
 {
     [DbContext(typeof(HrDatabaseContext))]
-    [Migration("20240710064853_updateemployeetype")]
-    partial class updateemployeetype
+    [Migration("20240711112514_initialmig")]
+    partial class initialmig
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -52,6 +52,10 @@ namespace HR.ScheduleManagement.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("extraTask")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("secondTask")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -67,6 +71,7 @@ namespace HR.ScheduleManagement.Persistence.Migrations
                             Name = "Test1",
                             Position = "O/E",
                             Task = "Shipping",
+                            extraTask = "Dagens",
                             secondTask = "Scanning"
                         });
                 });

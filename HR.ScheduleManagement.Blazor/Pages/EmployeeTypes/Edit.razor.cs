@@ -32,5 +32,10 @@ namespace HR.ScheduleManagement.Blazor.Pages.EmployeeTypes
             }
             Message = response.Message;
         }
+
+        private void NavigateToIndex()
+        {
+            _navManager.NavigateTo("/employeetypes/");
+        }
     }
 }

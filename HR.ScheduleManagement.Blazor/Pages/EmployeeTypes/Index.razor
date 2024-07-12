@@ -114,8 +114,8 @@ else
 
         .button-container {
             display: flex;
-            justify-content: flex-end; /* Align to the right */
-            margin-bottom: 20px; /* Optional: to add space at the bottom */
+            justify-content: flex-end;
+            margin-bottom: 20px;
         }
 
         .add-employee {
@@ -125,11 +125,25 @@ else
             text-decoration: none;
             border-radius: 5px;
             display: inline-block;
-            margin-top: 10px; /* Optional: to add space at the top */
+            margin-top: 10px;
+        }
+
+        /* Additional CSS for the blue button to match the green one */
+        .btn-primary {
+            background-color: #3498db; /* Ensure this matches the primary button color */
+            color: #ffffff;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 10px;
+            border: none; /* Ensure no border is applied */
+            cursor: pointer;
+            font-size: 14px; /* Adjust font size to match the other buttons */
         }
     </style>
 
-    <!DOCTYPE html>
+<!DOCTYPE html>
     <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -142,6 +156,7 @@ else
             <div class="container">
                 <div class="button-container">
                     <button @onclick="CreateEmployeeType" class="btn btn-success add-employee">Add Employee</button>
+                    <button @onclick="AssignRandomTasks" class="btn btn-primary">Assign Random Tasks</button>
                 </div>
                 <div class="table-container">
                     <table>
@@ -160,11 +175,11 @@ else
                                 string taskStyle = "";
                                 string secondTaskStyle = "";
 
-                                // Convert tasks to lowercase for case-insensitive comparison
+                                
                                 string taskLower = employeeType.Task?.ToLower();
                                 string secondTaskLower = employeeType.secondTask?.ToLower();
 
-                                // Determine styles based on Task
+                               
                                 if (taskLower == "sjuk")
                                 {
                                     taskStyle = "background-color: red; color: white;";
@@ -174,7 +189,7 @@ else
                                     taskStyle = "background-color: green; color: black;";
                                 }
 
-                                // Determine styles based on secondTask
+                              
                                 if (secondTaskLower == "sjuk")
                                 {
                                     secondTaskStyle = "background-color: red; color: white;";
@@ -205,16 +220,6 @@ else
 
 
 
-
-
-
-
-
-
-
-
-
-
 }
 @code{
 
@@ -224,11 +229,16 @@ else
     [Inject]
     public IEmployeeTypeService EmployeeTypeService { get; set; }
 
-
     public List<EmployeeTypeVM> EmployeeTypes { get; private set; }
-
-
     public string Message { get; set; } = string.Empty;
+    private List<string> randomTasks = new List<string>
+    {
+        "Scanning",
+        "O/E",
+        "Shipping",
+        "Limning",
+        
+    };
 
     protected void CreateEmployeeType()
     {
@@ -250,7 +260,6 @@ else
         var response = await EmployeeTypeService.DeleteEmployeeType(id);
         if (response.Success)
         {
-
             await OnInitializedAsync();
         }
         else
@@ -259,7 +268,21 @@ else
         }
     }
 
-    protected override async Task OnInitializedAsync() => EmployeeTypes = await EmployeeTypeService.GetEmployeeTypes();
+    protected override async Task OnInitializedAsync()
+    {
+        EmployeeTypes = await EmployeeTypeService.GetEmployeeTypes();
+       
+    }
+
+    private void AssignRandomTasks()
+    {
+        var rand = new Random();
+        foreach (var employee in EmployeeTypes)
+        {
+            employee.Task = randomTasks[rand.Next(randomTasks.Count)];
+            employee.secondTask = randomTasks[rand.Next(randomTasks.Count)];
+        }
+        StateHasChanged(); 
+    }
 
 }
-                          

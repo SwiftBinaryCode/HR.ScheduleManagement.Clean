@@ -22,6 +22,8 @@ namespace HR.ScheduleManagement.Persistence.Migrations
                     Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     Position = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Task = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    secondTask = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    extraTask = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DateCreated = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DateModified = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
@@ -47,8 +49,8 @@ namespace HR.ScheduleManagement.Persistence.Migrations
 
             migrationBuilder.InsertData(
                 table: "Employees",
-                columns: new[] { "Id", "DateCreated", "DateModified", "Name", "Position", "Task" },
-                values: new object[] { 1, null, null, "Test1", "O/E", "Shipping" });
+                columns: new[] { "Id", "DateCreated", "DateModified", "Name", "Position", "Task", "extraTask", "secondTask" },
+                values: new object[] { 1, null, null, "Test1", "O/E", "Shipping", "Dagens", "Scanning" });
 
             migrationBuilder.InsertData(
                 table: "Tasks",
