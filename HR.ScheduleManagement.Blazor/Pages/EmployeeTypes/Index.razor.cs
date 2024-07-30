@@ -64,30 +64,37 @@ namespace HR.ScheduleManagement.Blazor.Pages.EmployeeTypes
 
             foreach (var employee in EmployeeTypes)
             {
-                
-                string firstTask;
-                string secondTask;
-
-                do
+                if (employee.Status == "Sjuk" || employee.Status == "Ledig" || employee.Status == "Vab")
                 {
-                    firstTask = randomTasks[rand.Next(randomTasks.Count)];
-                    secondTask = randomTasks[rand.Next(randomTasks.Count)];
-                } while ((secondTask == "O/E") ||
-                         (firstTask == "Limning" && secondTask == "Limning") ||
-                         (firstTask == "Limning" && limningAssignedBeforeLunch) ||
-                         (secondTask == "Limning" && limningAssignedAfterLunch) ||
-                         (employee.Name == "Erja" && (firstTask == "Limning" || secondTask == "Limning")));
-
-                employee.Task = firstTask;
-                employee.secondTask = secondTask;
-
-                if (firstTask == "Limning")
-                {
-                    limningAssignedBeforeLunch = true;
+                    employee.Task = employee.Status;
+                    employee.secondTask = employee.Status;
                 }
-                if (secondTask == "Limning")
+                else
                 {
-                    limningAssignedAfterLunch = true;
+                    string firstTask;
+                    string secondTask;
+
+                    do
+                    {
+                        firstTask = randomTasks[rand.Next(randomTasks.Count)];
+                        secondTask = randomTasks[rand.Next(randomTasks.Count)];
+                    } while ((secondTask == "O/E") ||
+                            (firstTask == "Limning" && secondTask == "Limning") ||
+                            (firstTask == "Limning" && limningAssignedBeforeLunch) ||
+                            (secondTask == "Limning" && limningAssignedAfterLunch) ||
+                            (employee.Name == "Erja" && (firstTask == "Limning" || secondTask == "Limning")));
+
+                    employee.Task = firstTask;
+                    employee.secondTask = secondTask;
+
+                    if (firstTask == "Limning")
+                    {
+                        limningAssignedBeforeLunch = true;
+                    }
+                    if (secondTask == "Limning")
+                    {
+                        limningAssignedAfterLunch = true;
+                    }
                 }
 
                 var response = await EmployeeTypeService.UpdateEmployeeType(employee.Id, employee);
@@ -99,6 +106,7 @@ namespace HR.ScheduleManagement.Blazor.Pages.EmployeeTypes
             }
             StateHasChanged();
         }
+
 
 
     }

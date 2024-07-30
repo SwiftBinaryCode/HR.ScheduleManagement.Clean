@@ -23,6 +23,17 @@ else
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="css/styles.css">
         <title>Employee Schedule</title>
+        <style>
+            .status-ledig {
+                background-color: green;
+                color: black;
+            }
+
+            .status-sjuk, .status-vab {
+                background-color: red;
+                color: white;
+            }
+        </style>
     </head>
     <body>
         <main>
@@ -48,32 +59,30 @@ else
                             {
                                 string taskStyle = "";
                                 string secondTaskStyle = "";
+                                string statusClass = "";
 
-                                string taskLower = employeeType.Task?.ToLower();
-                                string secondTaskLower = employeeType.secondTask?.ToLower();
-
-                                if (taskLower == "sjuk")
+                                if (employeeType.Status?.ToLower() == "sjuk" || employeeType.Status?.ToLower() == "vab")
                                 {
+                                    statusClass = "status-sjuk";
                                     taskStyle = "background-color: red; color: white;";
+                                    secondTaskStyle = "background-color: red; color: white;";
+                                    employeeType.Task = employeeType.Status;
+                                    employeeType.secondTask = employeeType.Status;
                                 }
-                                else if (taskLower == "ledig")
+                                else if (employeeType.Status?.ToLower() == "ledig")
                                 {
+                                    statusClass = "status-ledig";
                                     taskStyle = "background-color: green; color: black;";
+                                    secondTaskStyle = "background-color: green; color: black;";
+                                    employeeType.Task = employeeType.Status;
+                                    employeeType.secondTask = employeeType.Status;
                                 }
 
-                                if (secondTaskLower == "sjuk")
-                                {
-                                    secondTaskStyle = "background-color: red; color: white;";
-                                }
-                                else if (secondTaskLower == "ledig")
-                                {
-                                    secondTaskStyle = "background-color: green; color: black;";
-                                }
                                 <tr>
                                     <td>@employeeType.Name</td>
-                                    <td>@employeeType.Status</td>
-                                    <td style="@taskStyle">@employeeType.Task</td>
-                                    <td style="@secondTaskStyle">@employeeType.secondTask</td>
+                                    <td class="@statusClass">@employeeType.Status</td>
+                                    <td class="@statusClass" style="@taskStyle">@employeeType.Task</td>
+                                    <td class="@statusClass" style="@secondTaskStyle">@employeeType.secondTask</td>
                                     <td>@employeeType.extraTask</td>
                                     <td>
                                         <button @onclick="@(() => EditEmployeeType(employeeType.Id))" class="btn btn-warning">Edit</button>
@@ -88,6 +97,7 @@ else
         </main>
     </body>
     </html>
+
 
 
 
