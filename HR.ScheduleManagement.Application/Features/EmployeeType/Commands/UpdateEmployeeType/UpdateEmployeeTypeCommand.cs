@@ -14,5 +14,7 @@ namespace HR.ScheduleManagement.Application.Features.EmployeeType.Commands.Updat
         public string secondTask { get; set; } = string.Empty;
 
         public string extraTask { get; set; }
+
+        public string Status { get; set; } 
     }
 }

@@ -12,14 +12,14 @@ namespace HR.ScheduleManagement.Blazor.Models.EmployeeTypes
         [Required]
         public string Position { get; set; }
 
-        [Required]
+        
         public string Task { get; set; }
 
-        [Required]
         public string secondTask { get; set; } = string.Empty;
 
         public string extraTask { get; set; } = string.Empty;
 
+        public string Status { get; set; } = string.Empty;
 
     }
 }

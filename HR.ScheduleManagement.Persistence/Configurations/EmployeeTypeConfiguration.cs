@@ -16,7 +16,9 @@ namespace HR.ScheduleManagement.Persistence.Configurations
                    Position = "O/E",
                    Task = "Shipping",
                    secondTask = "Scanning",
-                   extraTask = "Dagens"
+                   extraTask = "Dagens",
+                   Status = "Ledig"
+                   
                  
 
                }

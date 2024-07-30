@@ -64,6 +64,7 @@ namespace HR.ScheduleManagement.Blazor.Pages.EmployeeTypes
 
             foreach (var employee in EmployeeTypes)
             {
+                
                 string firstTask;
                 string secondTask;
 
@@ -98,6 +99,7 @@ namespace HR.ScheduleManagement.Blazor.Pages.EmployeeTypes
             }
             StateHasChanged();
         }
+
 
     }
 }
