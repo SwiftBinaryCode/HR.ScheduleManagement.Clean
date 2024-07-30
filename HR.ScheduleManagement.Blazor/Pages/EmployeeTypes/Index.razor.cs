@@ -71,9 +71,11 @@ namespace HR.ScheduleManagement.Blazor.Pages.EmployeeTypes
                 {
                     firstTask = randomTasks[rand.Next(randomTasks.Count)];
                     secondTask = randomTasks[rand.Next(randomTasks.Count)];
-                } while ((secondTask == "O/E") || (firstTask == "Limning" && secondTask == "Limning") ||
+                } while ((secondTask == "O/E") ||
+                         (firstTask == "Limning" && secondTask == "Limning") ||
                          (firstTask == "Limning" && limningAssignedBeforeLunch) ||
-                         (secondTask == "Limning" && limningAssignedAfterLunch));
+                         (secondTask == "Limning" && limningAssignedAfterLunch) ||
+                         (employee.Name == "Erja" && (firstTask == "Limning" || secondTask == "Limning")));
 
                 employee.Task = firstTask;
                 employee.secondTask = secondTask;
@@ -96,5 +98,6 @@ namespace HR.ScheduleManagement.Blazor.Pages.EmployeeTypes
             }
             StateHasChanged();
         }
+
     }
 }
