@@ -4,18 +4,18 @@
     padding: 0;
     background-color: #f4f4f9;
     color: #333;
-    font-size: 24px; /* Increased base font size */
+    font-size: 1em; /* Base font size */
 }
 
 header {
     background-color: #2c3e50;
-    padding: 40px 0; /* Increased padding */
+    padding: 2em 0; /* Adjusted padding */
     color: #ecf0f1;
     text-align: center;
 }
 
     header .logo {
-        font-size: 72px; /* Increased font size */
+        font-size: 3em; /* Adjusted font size */
         font-weight: bold;
     }
 
@@ -26,38 +26,38 @@ nav ul {
     justify-content: center;
 }
 
-nav ul li {
-margin: 0 30px; /* Increased margin */
-}
+    nav ul li {
+        margin: 0 1.25em; /* Adjusted margin */
+    }
 
-nav ul li a {
-    color: #ecf0f1;
-    text-decoration: none;
-    font-size: 48px; /* Increased font size */
-}
+        nav ul li a {
+            color: #ecf0f1;
+            text-decoration: none;
+            font-size: 2em; /* Adjusted font size */
+        }
 
 .container {
     width: 90%;
-    margin: 50px auto; /* Increased margin */
+    margin: 2.5em auto; /* Adjusted margin */
 }
 
 .table-container {
-    margin: 50px 0; /* Increased margin */
+    margin: 1.5em 0; /* Adjusted margin */
 }
+
 table {
-    width: 100%;
+    width: 100%; /* Adjusted width */
     border-collapse: collapse;
-    margin-bottom: 40px;
+    margin-bottom: 1.5em;
     background-color: #ffffff;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    font-size: 54px; /* Increased font size */
+    box-shadow: 0 0 1.25em rgba(0, 0, 0, 0.1);
+    font-size: 1em; /* Adjusted font size */
 }
 
 th, td {
-    padding: 30px 40px; /* Increased padding */
+    padding: 0.75em 1em; /* Adjusted padding */
     text-align: left;
-    border-bottom: 2px solid #ddd;
-    font: 100px; /* Increased font size */
+    border-bottom: 0.1em solid #ddd;
 }
 
 thead th {
@@ -73,46 +73,51 @@ tbody tr:nth-child(even) {
     background-color: #ecf0f1;
 }
 
+.button-container {
+    display: flex;
+    justify-content: flex-end; /* Align buttons to the right */
+    margin-bottom: 1em; /* Add some space between buttons and table */
+}
+
 .btn {
-    padding: 40px 60px; /* Significantly increased padding */
+    padding: 0.75em 1em; /* Adjusted padding */
     border: none;
     cursor: pointer;
-    font-size: 48px; /* Significantly increased font size */
-    border-radius: 15px; /* Further increased border radius */
-    margin: 0 20px; /* Increased margin */
+    font-size: 1em; /* Adjusted font size */
+    border-radius: 0.25em; /* Adjusted border radius */
+    margin-left: 0.5em; /* Space between buttons */
 }
 
 .btn-warning {
     background-color: #f39c12;
     color: #ffffff;
+    padding: 0.5em 1em; /* Smaller padding for edit button */
+    font-size: 0.875em; /* Smaller font size for edit button */
 }
 
 .btn-danger {
     background-color: #e74c3c;
     color: #ffffff;
+    padding: 0.5em 1em; /* Smaller padding for delete button */
+    font-size: 0.875em; /* Smaller font size for delete button */
 }
 
 .add-employee {
     background-color: #27ae60;
     color: #ffffff;
-    padding: 40px 60px; /* Significantly increased padding */
+    padding: 0.75em 1em; /* Adjusted padding */
     text-decoration: none;
-    border-radius: 15px; /* Further increased border radius */
-    display: inline-block;
-    margin-top: 20px; /* Increased margin */
-    font-size: 48px; /* Significantly increased font size */
+    border-radius: 0.25em; /* Adjusted border radius */
+    font-size: 1em; /* Adjusted font size */
 }
 
-/* Additional CSS for the blue button to match the green one */
 .btn-primary {
     background-color: #3498db;
     color: #ffffff;
-    padding: 40px 60px; /* Significantly increased padding */
+    padding: 0.75em 1em; /* Adjusted padding */
     text-decoration: none;
-    border-radius: 15px; /* Further increased border radius */
-    display: inline-block;
-    margin-top: 20px; /* Increased margin */
+    border-radius: 0.25em; /* Adjusted border radius */
     border: none;
     cursor: pointer;
-    font-size: 48px; /* Significantly increased font size */
+    font-size: 1em; /* Adjusted font size */
 }
