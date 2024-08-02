@@ -6,9 +6,9 @@
 
     <fieldset disabled="@Disabled">
         <div class="form-group">
-            <label>Name:</label>
+            <label for="name">Name: <span class="required">*</span></label>
             <div>
-                <InputText @bind-Value="@EmployeeType.Name" class="form-control" />
+                <InputText @bind-Value="@EmployeeType.Name" class="form-control" id="name" required />
                 <ValidationMessage For="@(() => EmployeeType.Name)" />
             </div>
         </div>

@@ -1,4 +1,6 @@
 ﻿@page "/employeetypes/"
+@using System.Globalization
+@inject IJSRuntime JS
 
 <h3>Schema O/E</h3>
 
@@ -33,11 +35,25 @@ else
                 background-color: red;
                 color: white;
             }
+
+            .date-container {
+                font-size: 36px;
+                font-weight: bold;
+                margin-bottom: 20px;
+                text-align: center;
+            }
+
+            .table-container table {
+                font-size: 20px; /* Adjust the size as needed */
+            }
         </style>
     </head>
     <body>
         <main>
             <div class="container">
+                <div class="date-container">
+                    @DateTime.Now.ToString("dddd, MMMM dd, yyyy")
+                </div>
                 <div class="button-container">
                     <button @onclick="CreateEmployeeType" class="btn btn-success add-employee">Add Employee</button>
                     <button @onclick="AssignRandomTasks" class="btn btn-primary">Assign Random Tasks</button>
@@ -97,8 +113,6 @@ else
         </main>
     </body>
     </html>
-
-
 
 
 }

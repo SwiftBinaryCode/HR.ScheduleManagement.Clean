@@ -1,6 +1,7 @@
 using HR.ScheduleManagement.Blazor.Contracts;
 using HR.ScheduleManagement.Blazor.Models.EmployeeTypes;
 using Microsoft.AspNetCore.Components;
+using System.Globalization;
 
 namespace HR.ScheduleManagement.Blazor.Pages.EmployeeTypes
 {
@@ -21,7 +22,7 @@ namespace HR.ScheduleManagement.Blazor.Pages.EmployeeTypes
         "Shipping",
         "Limning",
     };
-
+      
         protected void CreateEmployeeType()
         {
             NavigationManager.NavigateTo("/employeetypes/create/");
@@ -61,6 +62,9 @@ namespace HR.ScheduleManagement.Blazor.Pages.EmployeeTypes
             var rand = new Random();
             bool limningAssignedBeforeLunch = false;
             bool limningAssignedAfterLunch = false;
+            int scanningAssignedBeforeLunch = 0;
+            int scanningAssignedAfterLunch = 0;
+            int oeAssignedBeforeLunch = 0;
 
             foreach (var employee in EmployeeTypes)
             {
@@ -78,11 +82,16 @@ namespace HR.ScheduleManagement.Blazor.Pages.EmployeeTypes
                     {
                         firstTask = randomTasks[rand.Next(randomTasks.Count)];
                         secondTask = randomTasks[rand.Next(randomTasks.Count)];
-                    } while ((secondTask == "O/E") ||
-                            (firstTask == "Limning" && secondTask == "Limning") ||
-                            (firstTask == "Limning" && limningAssignedBeforeLunch) ||
-                            (secondTask == "Limning" && limningAssignedAfterLunch) ||
-                            (employee.Name == "Erja" && (firstTask == "Limning" || secondTask == "Limning")));
+                    } while ((firstTask == secondTask) || // Ensure different tasks before and after lunch
+                             (secondTask == "O/E") ||
+                             (firstTask == "Limning" && secondTask == "Limning") ||
+                             (firstTask == "Limning" && limningAssignedBeforeLunch) ||
+                             (secondTask == "Limning" && limningAssignedAfterLunch) ||
+                             (employee.Name == "Erja" && (firstTask == "Limning" || secondTask == "Limning")) ||
+                             (firstTask == "Scanning" && scanningAssignedBeforeLunch >= 3) ||
+                             (secondTask == "Scanning" && scanningAssignedAfterLunch >= 3) ||
+                             (firstTask == "O/E" && oeAssignedBeforeLunch >= 3) ||
+                             (secondTask == "O/E"));
 
                     employee.Task = firstTask;
                     employee.secondTask = secondTask;
@@ -94,6 +103,18 @@ namespace HR.ScheduleManagement.Blazor.Pages.EmployeeTypes
                     if (secondTask == "Limning")
                     {
                         limningAssignedAfterLunch = true;
+                    }
+                    if (firstTask == "Scanning")
+                    {
+                        scanningAssignedBeforeLunch++;
+                    }
+                    if (secondTask == "Scanning")
+                    {
+                        scanningAssignedAfterLunch++;
+                    }
+                    if (firstTask == "O/E")
+                    {
+                        oeAssignedBeforeLunch++;
                     }
                 }
 

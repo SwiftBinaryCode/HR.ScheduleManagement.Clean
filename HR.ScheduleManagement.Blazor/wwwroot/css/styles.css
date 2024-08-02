@@ -4,17 +4,18 @@
     padding: 0;
     background-color: #f4f4f9;
     color: #333;
+    font-size: 24px; /* Increased base font size */
 }
 
 header {
     background-color: #2c3e50;
-    padding: 10px 0;
+    padding: 40px 0; /* Increased padding */
     color: #ecf0f1;
     text-align: center;
 }
 
     header .logo {
-        font-size: 24px;
+        font-size: 72px; /* Increased font size */
         font-weight: bold;
     }
 
@@ -26,37 +27,37 @@ nav ul {
 }
 
 nav ul li {
-margin: 0 10px;
+margin: 0 30px; /* Increased margin */
 }
 
 nav ul li a {
     color: #ecf0f1;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 48px; /* Increased font size */
 }
 
 .container {
     width: 90%;
-    margin: 20px auto;
+    margin: 50px auto; /* Increased margin */
 }
 
 .table-container {
-    margin: 20px 0;
+    margin: 50px 0; /* Increased margin */
 }
-
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
     background-color: #ffffff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    font-size: 54px; /* Increased font size */
 }
 
 th, td {
-    padding: 10px 15px;
+    padding: 30px 40px; /* Increased padding */
     text-align: left;
-    font-size: 16px;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 2px solid #ddd;
+    font: 100px; /* Increased font size */
 }
 
 thead th {
@@ -73,12 +74,12 @@ tbody tr:nth-child(even) {
 }
 
 .btn {
-    padding: 5px 10px;
+    padding: 40px 60px; /* Significantly increased padding */
     border: none;
     cursor: pointer;
-    font-size: 14px;
-    border-radius: 3px;
-    margin: 0 5px;
+    font-size: 48px; /* Significantly increased font size */
+    border-radius: 15px; /* Further increased border radius */
+    margin: 0 20px; /* Increased margin */
 }
 
 .btn-warning {
@@ -91,32 +92,27 @@ tbody tr:nth-child(even) {
     color: #ffffff;
 }
 
-.button-container {
-    display: flex;
-    justify-content: flex-end;
-    margin-bottom: 20px;
-}
-
 .add-employee {
     background-color: #27ae60;
     color: #ffffff;
-    padding: 10px 15px;
+    padding: 40px 60px; /* Significantly increased padding */
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: 15px; /* Further increased border radius */
     display: inline-block;
-    margin-top: 10px;
+    margin-top: 20px; /* Increased margin */
+    font-size: 48px; /* Significantly increased font size */
 }
 
 /* Additional CSS for the blue button to match the green one */
 .btn-primary {
-    background-color: #3498db; /* Ensure this matches the primary button color */
+    background-color: #3498db;
     color: #ffffff;
-    padding: 10px 15px;
+    padding: 40px 60px; /* Significantly increased padding */
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: 15px; /* Further increased border radius */
     display: inline-block;
-    margin-top: 10px;
-    border: none; /* Ensure no border is applied */
+    margin-top: 20px; /* Increased margin */
+    border: none;
     cursor: pointer;
-    font-size: 14px; /* Adjust font size to match the other buttons */
+    font-size: 48px; /* Significantly increased font size */
 }

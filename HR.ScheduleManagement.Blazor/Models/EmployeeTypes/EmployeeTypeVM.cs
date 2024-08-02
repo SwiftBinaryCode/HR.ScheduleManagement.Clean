@@ -6,14 +6,13 @@ namespace HR.ScheduleManagement.Blazor.Models.EmployeeTypes
     {
         public int Id { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Name is required.")]
         public string Name { get; set; }
 
-        [Required]
-        public string Position { get; set; }
+        public string Position { get; set; } = string.Empty;
 
         
-        public string Task { get; set; }
+        public string Task { get; set; } = string.Empty;
 
         public string secondTask { get; set; } = string.Empty;
 
