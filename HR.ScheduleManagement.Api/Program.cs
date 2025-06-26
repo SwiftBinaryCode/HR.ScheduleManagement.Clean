@@ -2,6 +2,7 @@ using HR.ScheduleManagement.Api.Middleware;
 using HR.ScheduleManagement.Application;
 using HR.ScheduleManagement.Infrastructure;
 using HR.ScheduleManagement.Persistence;
+using HR.ScheduleManagement.Ident;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddApplicationServices();
 builder.Services.AddInfrastructureServices(builder.Configuration);
 builder.Services.AddPersistenceServices(builder.Configuration);
+builder.Services.AddIdentityServices(builder.Configuration);
 
 
 builder.Services.AddControllers();
@@ -39,8 +41,9 @@ app.UseHttpsRedirection();
 
 app.UseCors("all");
 
-
+app.UseAuthentication();
 app.UseAuthorization();
+
 
 app.MapControllers();
 

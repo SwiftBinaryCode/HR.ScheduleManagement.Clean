@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Blazored.LocalStorage;
 using HR.ScheduleManagement.Blazor.Contracts;
 using HR.ScheduleManagement.Blazor.Models.TaskTypes;
 using HR.ScheduleManagement.Blazor.Services.Base;
@@ -9,7 +10,7 @@ namespace HR.ScheduleManagement.Blazor.Services
     {
         private readonly IMapper _mapper;
 
-        public TaskTypeService(IClient client, IMapper mapper) : base(client)
+        public TaskTypeService(IClient client, IMapper mapper, ILocalStorageService localStorageService) : base(client, localStorageService)
         {
             this._mapper = mapper;
         }

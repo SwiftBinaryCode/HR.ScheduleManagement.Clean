@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\HR.ScheduleManagement.Application\HR.ScheduleManagement.Application.csproj" />
+    <ProjectReference Include="..\HR.ScheduleManagement.Ident\HR.ScheduleManagement.Ident.csproj" />
     <ProjectReference Include="..\HR.ScheduleManagement.Infrastructure\HR.ScheduleManagement.Infrastructure.csproj" />
     <ProjectReference Include="..\HR.ScheduleManagement.Persistence\HR.ScheduleManagement.Persistence.csproj" />
   </ItemGroup>

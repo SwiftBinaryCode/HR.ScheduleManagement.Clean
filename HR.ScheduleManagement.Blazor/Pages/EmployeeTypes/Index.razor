@@ -54,10 +54,12 @@ else
                 <div class="date-container">
                     @DateTime.Now.ToString("dddd, MMMM dd, yyyy")
                 </div>
-                <div class="button-container">
-                    <button @onclick="CreateEmployeeType" class="btn btn-success add-employee">Add Employee</button>
-                    <button @onclick="AssignRandomTasks" class="btn btn-primary">Assign Random Tasks</button>
-                </div>
+                <AuthorizeView Roles="Administrator">
+                    <Authorized>
+                        <button @onclick="CreateEmployeeType" class="btn btn-success add-employee">Add Employee</button>
+                        <button @onclick="AssignRandomTasks" class="btn btn-primary">Assign Random Tasks</button>
+                    </Authorized>
+                </AuthorizeView>
                 <div class="table-container">
                     <table>
                         <thead>
@@ -101,8 +103,12 @@ else
                                     <td class="@statusClass" style="@secondTaskStyle">@employeeType.secondTask</td>
                                     <td>@employeeType.extraTask</td>
                                     <td>
-                                        <button @onclick="@(() => EditEmployeeType(employeeType.Id))" class="btn btn-warning">Edit</button>
-                                        <button @onclick="@(() => DeleteEmployeeType(employeeType.Id))" class="btn btn-danger">Delete</button>
+                                        <AuthorizeView Roles="Administrator">
+                                            <Authorized>
+                                                <button @onclick="@( () => EditEmployeeType(employeeType.Id) )" class="btn btn-warning">Edit</button>
+                                                <button @onclick="@( () => DeleteEmployeeType(employeeType.Id) )" class="btn btn-danger">Delete</button>
+                                            </Authorized>
+                                        </AuthorizeView>
                                     </td>
                                 </tr>
                             }

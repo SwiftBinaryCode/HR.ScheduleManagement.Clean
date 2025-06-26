@@ -54,6 +54,8 @@ namespace HR.ScheduleManagement.Blazor.Pages.EmployeeTypes
         protected override async Task OnInitializedAsync()
         {
             EmployeeTypes = await EmployeeTypeService.GetEmployeeTypes();
+
+            
         }
 
 

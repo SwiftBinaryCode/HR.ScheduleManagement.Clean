@@ -1,0 +1,52 @@
+﻿@page "/"
+@using HR.ScheduleManagement.Blazor.Providers
+
+<PageTitle>Index</PageTitle>
+
+<h1 class="text-center">Welcome</h1>
+<br />
+<br />
+<br />
+
+<AuthorizeView>
+    <Authorized>
+        <button class="btn btn-danger" @onclick="Logout">Logout</button>
+    </Authorized>
+    <NotAuthorized>
+        <button class="btn btn-success" @onclick="GoToLogin">Login</button>
+        <button class="btn btn-primary" @onclick="GoToRegister">Register</button>
+    </NotAuthorized>
+</AuthorizeView>
+
+@code{
+
+    [Inject]
+    private AuthenticationStateProvider AuthenticationStateProvider { get; set; }
+
+    [Inject]
+    NavigationManager NavManager { get; set; }
+
+    [Inject]
+    public IAuthenticationService AuthenticationService { get; set; }
+
+    protected async override Task OnInitializedAsync()
+    {
+        await ((ApiAuthenticationStateProvider)AuthenticationStateProvider).GetAuthenticationStateAsync();
+    }
+
+    protected void GoToLogin()
+    {
+        NavManager.NavigateTo("login/");
+    }
+
+    protected void GoToRegister()
+    {
+        NavManager.NavigateTo("register/");
+    }
+
+    protected async void Logout()
+    {
+        await AuthenticationService.Logout();
+    }
+
+}
